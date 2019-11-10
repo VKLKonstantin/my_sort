@@ -1,31 +1,37 @@
 package by.konstantinvklcorporation;
 
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static by.konstantinvklcorporation.Sort.handbook;
-import static by.konstantinvklcorporation.Sort.listK1;
 import static org.junit.Assert.*;
 
 public class SortTest {
 
-    @org.junit.Test
+    @Test
     public void groups() {
-        Sort sort = new Sort();
-        String [] s1 ={"K1\\SK1", "K1\\SK2", "K1\\SK1\\SSK1", "K1\\SK1\\SSK2"};
-        for (int i = 0; i < s1.length&&i<listK1.size(); i++) {
-if(sort.listK1.get(i)==s1[i]) {
-    System.out.print("TRUE " );
-}
-    else {
-    System.out.print("FALSE ");
-    }
+        String[] k1 = {"K1\\SK1", "K1\\SK2", "K1\\SK1\\SSK1", "K1\\SK1\\SSK2"};
+        String[] k2 = {"K2", "K2\\SK1\\SSK1", "K2\\SK1\\SSK2"};
 
+        List<String> testing1 = new ArrayList();
+        List<String> testing2 = new ArrayList();
 
+        for (int i = 0; i < k1.length; i++) {
+            testing1.add(k1[i]);
         }
-    }
-   /* @org.junit.Test
-    public void addition() {
-    }
+        for (int i = 0; i < k2.length; i++) {
+            testing2.add(k2[i]);
+        }
 
-    @org.junit.Test
-    public void decrease() {
-    }*/
+        List<List> expected = Sort.groups(handbook);
+
+        List<List> actual = new ArrayList();
+        actual.add(testing1);
+        actual.add(testing2);
+
+        Assert.assertEquals(expected, actual);
+    }
 }
