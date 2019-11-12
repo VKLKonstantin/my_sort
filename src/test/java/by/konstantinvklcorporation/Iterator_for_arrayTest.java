@@ -26,7 +26,6 @@ public class Iterator_for_arrayTest {
 
         it.next();
         it.next();
-        it.next();
         it.hasNext();
 
         boolean result=it.hasNext();
